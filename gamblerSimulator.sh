@@ -5,11 +5,11 @@ echo "Welcome Gamling Simulator"
 stake=100
 bet=1
 
-#check gambler win or loss
+#add 50% if gambler win otherwise minus 50%
 bet=$((RANDOM%2))
 if [ $bet -eq 1 ]
 then
-	printf "win"
+	stake=$(($stake+50))
 else
-	printf "loose"
+	stake=$(($stake-50))
 fi
