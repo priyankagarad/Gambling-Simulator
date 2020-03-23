@@ -2,14 +2,27 @@
 echo "Welcome Gamling Simulator"
 
 #CONSTANT
-stake=100
-bet=1
+STAKE=100
+BET=1
+TOTAL_DAYS=20
 
-#add 50% if gambler win otherwise minus 50%
-bet=$((RANDOM%2))
-if [ $bet -eq 1 ]
-then
-	stake=$(($stake+50))
-else
-	stake=$(($stake-50))
-fi
+#VARIABLE
+amount=$STAKE
+
+LOW=$(($STAKE-$((STAKE*50/100)) ))
+HIGH=$(($STAKE+$((STAKE*50/100)) ))
+
+#calculated daily betting 
+while [ $amount -gt $LOW ] && [ $amount -lt $HIGH ] 
+do
+	random=$((RANDOM%2))
+	if [ $random -eq 1 ]
+	then
+		amount=$(($amount+$BET))
+	else
+		amount=$(($amount-$BET))
+	fi
+done
+gainAmount=$(($amount-$STAKE))
+
+
