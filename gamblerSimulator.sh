@@ -63,13 +63,20 @@ done
 
 #calculated unluckiest day
 echo "${array2[@]}"
-min_value=${array2[1]}
+max_value=${array2[1]}
 for (( j=1;j<=20;j++ ))
 do
-	if [[ ${array2[$j]} -lt $min_value ]]
+	if [[ ${array2[$j]} -gt $max_value ]]
 	then
-		min_value=${array1[$j]}
+		max_value=${array1[$j]}
 		unluckiest_day=$j
 	fi
 done
 
+#check playing next month or not
+if [[ $total_win_amount -gt $total_loss_amount ]]
+then
+	echo "player continue playing next month:"
+else
+	echo "player not countinue playing next month"
+fi
