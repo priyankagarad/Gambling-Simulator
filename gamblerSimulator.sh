@@ -21,13 +21,13 @@ do
 		if [ $random -eq 1 ]
 		then
 			amount=$(($amount+$BET))
-			win_amount=$(($win_amount+$amount))
+			win_amount=$(($win_amount+$BET))
 		else
 			amount=$(($amount-$BET))
-			loss_amount=$(($loss_amount+$amount))
+			loss_amount=$(($loss_amount+$BET))
 		fi
 	done
 	((day++))
 done
-echo "win amount$win_amount"
+echo "win amount $win_amount"
 echo "loss amount $loss_amount"
